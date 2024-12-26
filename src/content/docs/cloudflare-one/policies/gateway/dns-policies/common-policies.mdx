@@ -41,12 +41,10 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
   "filters": [
     "dns"
   ],
-  "traffic": "any(dns.domains[*] in $<LIST-UUID>)",
-  "identity": "",
+  "traffic": "any(dns.domains[*] in $<LIST_UUID>)",
+  "identity": ""
 }'
 ```
-
-To get the UUIDs of your lists, use the [List Zero Trust lists](/api/resources/zero_trust/subresources/gateway/subresources/lists/methods/list/) endpoint.
 
 </TabItem> </Tabs>
 
@@ -78,7 +76,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
     "dns"
   ],
   "traffic": "any(dns.security_category[*] in {68 178 80 83 176 175 117 131 134 151 153})",
-  "identity": "",
+  "identity": ""
 }'
 ```
 
@@ -111,7 +109,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
     "dns"
   ],
   "traffic": "any(dns.content_category[*] in {17 85 87 102 157 135 138 180 162 32 169 177 128 15 115 119 124 141 161})",
-  "identity": "",
+  "identity": ""
 }'
 ```
 
@@ -144,7 +142,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
     "dns"
   ],
   "traffic": "any(app.type.ids[*] in {25})",
-  "identity": "",
+  "identity": ""
 }'
 ```
 
@@ -177,7 +175,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
     "dns"
   ],
   "traffic": "any(dns.dst.geo.country[*] in {\"AF\" \"BY\" \"CD\" \"CU\" \"IR\" \"IQ\" \"KP\" \"MM\" \"RU\" \"SD\" \"SY\" \"UA\" \"ZW\"})",
-  "identity": "",
+  "identity": ""
 }'
 ```
 
@@ -212,7 +210,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
     "dns"
   ],
   "traffic": "any(dns.domains[*] matches \"[.](cn|ru)$\") or any(dns.domains[*] matches \"[.](rest|hair|top|live|cfd|boats|beauty|mom|skin|okinawa)$\") or any(dns.domains[*] matches \"[.](zip|mobi)$\")",
-  "identity": "",
+  "identity": ""
 }'
 ```
 
@@ -246,7 +244,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
     "dns"
   ],
   "traffic": "not(any(dns.domains[*] in $<LIST-UUID>)) and any(dns.domains[*] matches \".*okta.*\\|.*cloudflare.*\\|.*mfa.*\\|.sso.*\")",
-  "identity": "",
+  "identity": ""
 }'
 ```
 
@@ -256,7 +254,7 @@ To get the UUIDs of your lists, use the [List Zero Trust lists](/api/resources/z
 
 ## Block online tracking
 
-To safeguard user privacy, some organizations will block tracking domains such as _dig.whatsapp.com_ as well as other tracking domains embedded at the OS level. This policy is implemented by creating a custom blocklist. Refer to [this repository](https://github.com/nextdns/native-tracking-domains/tree/28991a0d5b2ab6d35588a74af82162ea7caff420/domains) for a list of widespread tracking domains that you can add to your blocklist.
+To safeguard user privacy, some organizations will block tracking domains such as `dig.whatsapp.com` as well as other tracking domains embedded at the OS level. This policy is implemented by creating a custom blocklist. Refer to [this repository](https://github.com/nextdns/native-tracking-domains/tree/28991a0d5b2ab6d35588a74af82162ea7caff420/domains) for a list of widespread tracking domains that you can add to your blocklist.
 
 <Tabs syncKey="dashPlusAPI"> <TabItem label="Dashboard">
 
@@ -280,8 +278,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
   "filters": [
     "dns"
   ],
-  "traffic": "any(dns.domains[*] in $<LIST-UUID>)",
-  "identity": "",
+  "traffic": "any(dns.domains[*] in $<LIST_UUID>)",
+  "identity": ""
 }'
 ```
 
@@ -315,8 +313,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
   "filters": [
     "dns"
   ],
-  "traffic": "any(dns.resolved_ips[*] in $<LIST-UUID>)",
-  "identity": "",
+  "traffic": "any(dns.resolved_ips[*] in $<LIST_UUID>)",
+  "identity": ""
 }'
 ```
 
@@ -351,7 +349,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
     "dns"
   ],
   "traffic": "any(dns.content_category[*] in {182})",
-  "identity": "",
+  "identity": ""
 }'
 ```
 
@@ -384,7 +382,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
     "dns"
   ],
   "traffic": "any(dns.content_category[*] in {145})",
-  "identity": "",
+  "identity": ""
 }'
 ```
 
@@ -489,7 +487,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
     "dns"
   ],
   "traffic": "any(dns.content_category[*] in {149})",
-  "identity": "",
+  "identity": ""
 }'
 ```
 
@@ -531,7 +529,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
     "dns"
   ],
   "traffic": "dns.query_rtype == \"AAAA\" and any(dns.domains[*] == \"example.com\")",
-  "identity": "",
+  "identity": ""
 }'
 ```
 
@@ -565,7 +563,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rule\
     "dns"
   ],
   "traffic": "dns.query_rtype == \"A\" and any(dns.domains[*] == \"example.com\")",
-  "identity": "",
+  "identity": ""
 }'
 ```
 
